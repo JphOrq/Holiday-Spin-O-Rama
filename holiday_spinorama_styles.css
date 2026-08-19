@@ -195,6 +195,7 @@ header {
   border-radius: 50%;
   border: 14px solid #fff;
   background: conic-gradient(
+    from 0deg,
     #ef4444 0deg 45deg,
     #16a34a 45deg 90deg,
     #fbbf24 90deg 135deg,
@@ -233,31 +234,9 @@ header {
   font-weight: 1000;
   text-shadow: 2px 2px #0008;
   font-size: clamp(0.72rem, 2vw, 1rem);
-  transform-origin: 0 0;
-}
-.labels span:nth-child(1) {
-  transform: rotate(22.5deg) translate(110px, -15px);
-}
-.labels span:nth-child(2) {
-  transform: rotate(67.5deg) translate(110px, -15px);
-}
-.labels span:nth-child(3) {
-  transform: rotate(112.5deg) translate(110px, -15px);
-}
-.labels span:nth-child(4) {
-  transform: rotate(157.5deg) translate(110px, -15px);
-}
-.labels span:nth-child(5) {
-  transform: rotate(202.5deg) translate(110px, -15px);
-}
-.labels span:nth-child(6) {
-  transform: rotate(247.5deg) translate(110px, -15px);
-}
-.labels span:nth-child(7) {
-  transform: rotate(292.5deg) translate(110px, -15px);
-}
-.labels span:nth-child(8) {
-  transform: rotate(337.5deg) translate(110px, -15px);
+  transform-origin: center;
+  transform: translate(-50%, -50%) rotate(var(--label-angle)) translateY(-110px)
+    rotate(calc(var(--label-angle) * -1));
 }
 .hub {
   position: absolute;

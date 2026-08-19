@@ -6,20 +6,21 @@ const CONFIG = {
     panel: "🎁 What will you get?",
     hub: "🎁",
     prizes: [
-      "🍪 Cookie",
+      "✨ Magic Luck",
       "🎁 Mystery Gift",
       "🧦 Cozy Socks",
       "☕ Hot Cocoa",
       "🎅 Santa High-Five",
-      "🦌 Reindeer Ride",
-      "✨ Magic Luck",
       "🎄 Mega Cheer",
+      "🍪 Cookie",
+      "🦌 Reindeer Ride",
     ],
     winnerMessages: [
       "HO HO HO!",
       "JINGLE YES!",
       "MERRY WINNER!",
       "YOU GOT IT!",
+      "FESTIVE VICTORY!",
     ],
   },
   newyear: {
@@ -62,7 +63,13 @@ function renderMode() {
   document.querySelector(".hub").textContent = c.hub;
   $("themeBtn").textContent =
     mode === "christmas" ? "🎆 New Year Mode" : "🎄 Christmas Mode";
-  labels.innerHTML = c.prizes.map((x) => `<span>${x}</span>`).join("");
+  const slice = 360 / c.prizes.length;
+  labels.innerHTML = c.prizes
+    .map(
+      (x, index) =>
+        `<span style="--label-angle: ${index * slice + slice / 2}deg">${x}</span>`,
+    )
+    .join("");
   result.textContent = "SPIN ME!";
   rotation = 0;
   wheel.style.transform = "rotate(0deg)";
@@ -164,14 +171,6 @@ $("spin").addEventListener("click", () => {
     addHistory(c.prizes[landedIndex]);
     winSound();
     confetti();
-    setTimeout(
-      () =>
-        (result.textContent =
-          c.winnerMessages[
-            Math.floor(Math.random() * c.winnerMessages.length)
-          ]),
-      700,
-    );
     spinning = false;
     $("spin").disabled = false;
   }, 4250);
