@@ -459,3 +459,41 @@
           transition: none;
         }
       }
+
+/* footer */
+.main-footer {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  height: 3rem;
+  margin-top: 2.5rem;
+}
+
+footer p {
+  margin: 0;
+  font-weight: 500;
+}
+
+footer a {
+  text-decoration: none;
+  color: black;
+}
+
+footer img {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.4s ease-in-out;
+}
+
+footer a:hover img {
+  transform: scale(1.3) rotate(360deg);
+}

@@ -190,3 +190,9 @@
       });
 
       renderMode();
+
+      // Get the current year
+var currentYear = new Date().getFullYear();
+
+// Update the content of the element with id="currentYear"
+document.getElementById("currentYear").textContent = currentYear;
