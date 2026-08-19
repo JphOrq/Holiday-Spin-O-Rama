@@ -235,8 +235,7 @@ header {
   text-shadow: 2px 2px #0008;
   font-size: clamp(0.72rem, 2vw, 1.25rem);
   transform-origin: center;
-  transform: translate(-50%, -50%) rotate(var(--label-angle)) translateY(-140px)
-    rotate(calc(var(--label-angle) * -1));
+  transform: translate(-50%, -50%) rotate(var(--label-angle)) translateY(-140px);
 }
 .hub {
   position: absolute;
