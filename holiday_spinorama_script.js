@@ -109,27 +109,32 @@ function winSound() {
   );
 }
 
-function confetti() {
-  const box = $("confetti");
+function confetti(totalPieces = 90, durationMs = 3000) {
+  const box =
+    typeof $ === "function"
+      ? $("confetti")
+      : document.getElementById("confetti");
+  if (!box) return;
+
   box.innerHTML = "";
-  for (let i = 0; i < 90; i++) {
+
+  for (let i = 0; i < totalPieces; i++) {
     const b = document.createElement("b");
-    b.style.left = "50%";
+    b.style.left = "45%";
     b.style.top = "45%";
-    b.style.background = [
-      "#ef4444",
-      "#22c55e",
-      "#fbbf24",
-      "#3b82f6",
-      "#ec4899",
-      "#8b5cf6",
-    ][i % 6];
-    b.style.setProperty("--x", `${(Math.random() - 0.5) * 110}vw`);
-    b.style.setProperty("--y", `${(Math.random() - 0.5) * 100}vh`);
+
+    // Dynamically calculate a unique color for each particle along the 360° hue spectrum
+    const hue = (i * (360 / totalPieces)) % 360;
+    b.style.background = `hsl(${hue}, 80%, 55%)`;
+
+    b.style.setProperty("--x", `${(Math.random() - 0.5) * 150}vw`);
+    b.style.setProperty("--y", `${(Math.random() - 0.5) * 150}vh`);
     b.style.transform = `rotate(${Math.random() * 360}deg)`;
+
     box.appendChild(b);
   }
-  setTimeout(() => (box.innerHTML = ""), 1600);
+
+  setTimeout(() => (box.innerHTML = ""), durationMs);
 }
 
 function addHistory(text) {
